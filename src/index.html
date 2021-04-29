@@ -1,0 +1,246 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vine2Wine</title>
+  <!-- <link rel="icon" type="image/png" href="./images/name.svg"> -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="container-fluid">
+        <header>
+            <h1 class="text-center">Vine2Wine</h1>
+        </header>
+        
+        <!-- Part 1 Setting up Basic Actions and Status-->
+        <section>
+            <div class="card-body">
+              <div class = "row">
+                <h4 class="card-title col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" id = "addressRole">Role:</h4>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" ></button>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <p class="info-text alert alert-primary">Network: <span id="network"></span></p>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <p class="info-text alert alert-secondary">ChainId: <span id="chainId"></span></p>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <p class="info-text alert alert-success">Account: <span id="accounts"></span></p>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <!-- This section is for farmer registering their Vineyard -->
+            <div class="card-body" id="farmer">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <h4>Register Your Vineyard</h4>
+                    <div class="form-group">
+                      <label for="LocationId">Vineyard Location ID:</label>
+                      <textarea class="form-control" id="LocationId" rows="1"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="GrapeVariety">Viney Variety:</label>
+                      <textarea class="form-control" id="GrapeVariety" rows="1"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="regVineyard">Register Vineyard</button>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <h4>View the Vineyard for the farmer</h4>
+                    <div class="form-group">
+                      <label for="LocationId">Farm details:</label>
+                      <textarea class="form-control" id="vineyardDetail" rows="5"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="showFarm">Show Details</button>
+                  </div>
+                </div>
+            </div>
+            <hr/>
+            <!-- This section will have farmer Picking grapes from his Vineyard -->
+            <div class="card-body" id="vineyardPicking">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Update Vineyard Picking</h4>
+                  <div class="form-group">
+                    <label for="LocationId">Vineyard Location ID:</label>
+                    <textarea class="form-control" id="LocationIdPick" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="pickVineyard">Pick Vineyard</button>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <!-- this section will receive the batch picked from a vineyard -->
+            <div class="card-body" id="receiveBatch">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Receive the Vine batch:</h4>
+                  <div class="form-group">
+                    <label for="batchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="batchNumber" rows="1"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="farmerAddress">Farmer Address:</label>
+                    <textarea class="form-control" id="farmerAddress" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="receiveVine">Receive Vine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update timestamp of destemming of the Vine -->
+            <div class="card-body" id="destem">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Destem the Vine batch:</h4>
+                  <div class="form-group">
+                    <label for="destemBatchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="destemBatchNumber" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="destemVine">Destem Vine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update timestamp of Crushing of the grapes -->
+            <div class="card-body" id="crush">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Crush the Vine batch:</h4>
+                  <div class="form-group">
+                    <label for="crushBatchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="crushBatchNumber" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="crushVine">Crush Vine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update timestamp of Chilling of the grapes -->
+            <div class="card-body" id="chill">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Chill the Vine batch:</h4>
+                  <div class="form-group">
+                    <label for="chillBatchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="chillBatchNumber" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="chillVine">Chill Vine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update timestamp of Pressing of the chilled grapes -->
+            <div class="card-body" id="press">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Press the Vine batch:</h4>
+                  <div class="form-group">
+                    <label for="pressBatchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="pressBatchNumber" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="pressVine">Press Vine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update timestamp of putting wine in barrell from producer -->
+            <div class="card-body" id="barrell">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Barrel the Wine:</h4>
+                  <div class="form-group">
+                    <label for="vineBatchNumber">Vine Batch Number:</label>
+                    <textarea class="form-control" id="vineBatchNumber" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="barrellWine">Barrell Wine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Receive the barrell from producer by the packer-->
+            <div class="card-body" id="barrellReceive">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Receive the barrell from Producer:</h4>
+                  <div class="form-group">
+                    <label for="barrellBatchRcv">Barrell Batch Number:</label>
+                    <textarea class="form-control" id="barrellBatchRcv" rows="1"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="prodAddress">Producer Address:</label>
+                    <textarea class="form-control" id="prodAddress" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="rcvBarrell">Receive Barrell</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Update the bottle id when the packer bottles wine from a barrell-->
+            <div class="card-body" id="barrellReceive">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Bottle the wine from the Barrell:</h4>
+                  <div class="form-group">
+                    <label for="bottleId">Bottel ID:</label>
+                    <textarea class="form-control" id="bottleId" rows="1"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="barrellBatch">Barrell Batch Number:</label>
+                    <textarea class="form-control" id="barrellBatch" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="bottleWine">Bottle Wine</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- Change the ownership of the bottle -->
+            <div class="card-body" id="bottleOwner">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <h4>Change the ownership of bottle:</h4>
+                  <div class="form-group">
+                    <label for="chgBottleOwn">Bottel ID:</label>
+                    <textarea class="form-control" id="chgBottleOwn" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="clickOwn">Take Ownership</button>
+                </div>
+              </div>
+            </div>  
+            <hr/>
+            <!-- This section is to show entire journey of the bottle -->
+            <div class="card-body" id="bothist">
+              <h4>View the Bottle history:</h4>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12"> 
+                  <div class="form-group">
+                    <label for="histBotId">Bottle Id:</label>
+                    <textarea class="form-control" id="histBotId" rows="1"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="clickhist">Bottle history</button>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                  <div class="form-group">
+                    <label for="history">Show History:</label>
+                    <textarea class="form-control" id="history" rows="15"></textarea>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>    
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+<script src="./js/v2w.js" defer></script>
+</body>
+
+</html>
